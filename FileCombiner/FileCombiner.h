@@ -7,6 +7,5 @@
 class FileCombiner
 {
 public:
-	static std::ofstream combineFiles(std::vector<std::string>, std::string);
-
+	static void combineFiles(std::vector<std::string>, std::string);
 };

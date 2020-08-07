@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "FileCombiner.h"
 #include "FileCombinerMenu.h"
 
 void FileCombinerMenu::startMenu()
@@ -24,8 +24,10 @@ void FileCombinerMenu::executeSelection()
 		addFiles(tmp);
 		break;
 	case Select::SELECT_DEFINE_DESTINATION:
+		setDestination();
 		break;
 	case Select::SELECT_COMBINE_FILES:
+		combineFiles();
 		break;
 	case Select::SELECT_QUIT:
 		break;
@@ -35,6 +37,7 @@ void FileCombinerMenu::executeSelection()
 	}
 }
 
+
 void FileCombinerMenu::addFiles(std::string& tmp)
 {
 	while (tmp != "#")
@@ -43,6 +46,15 @@ void FileCombinerMenu::addFiles(std::string& tmp)
 		std::cin >> tmp;
 		if (tmp != "#") paths.push_back(tmp);
 	}
+}
+
+void FileCombinerMenu::setDestination(){
+	std::cout << "Input a destination for the file: " << std::endl;
+	std::cin >> this->destPath;
+}
+
+void FileCombinerMenu::combineFiles() {
+	FileCombiner::combineFiles(paths, destPath);
 }
 
 void FileCombinerMenu::reUserSelection()
