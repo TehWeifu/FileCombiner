@@ -16,7 +16,7 @@ std::ofstream FileCombiner::combineFiles(std::vector<std::string> files, std::st
 		std::ifstream tempFile{ path, std::ios::in };
 		if (!tempFile) continue;
 
-		while (!tempFile.eof())
+		while (tempFile.good() && tempFile.peek() != EOF)
 		{
 			combinedFile.put(tempFile.get());
 		}

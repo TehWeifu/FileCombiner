@@ -16,91 +16,7 @@ std::ofstream FileCombiner::combineFiles(std::vector<std::string> files, std::st
 		std::ifstream tempFile{ path, std::ios::in };
 		if (!tempFile) continue;
 
-		while (!tempFile.eof())
-		{
-			combinedFile.put(tempFile.get());
-		}
-		combinedFile.put('\n');
-	}
-	//std::ostream_iterator<std::string> output{ std::cout, "\n" };
-	//std::copy(files.begin(), files.end(), output);
-
-	combinedFile.close();
-	return combinedFile;
-}ÿ
-#include <vector>
-#include <string>
-
-#include "FileCombiner.h"
-
-int main()
-{
-	std::vector<std::string> testVec{ "FileCombiner.cpp", "TestCombineFiles.cpp" };
-	FileCombiner::combineFiles(testVec, "test.txt");
-
-	return 0;
-}ÿ
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-
-#include "FileCombiner.h"
-
-std::ofstream FileCombiner::combineFiles(std::vector<std::string> files, std::string destination) {
-	std::ofstream combinedFile{destination, std::ios::app};
-	if (!combinedFile) {
-		std::cerr << "File could not be opened" << std::endl;
-		exit(EXIT_FAILURE);
-	}
-
-	for (auto path : files)
-	{
-		std::ifstream tempFile{ path, std::ios::in };
-		if (!tempFile) continue;
-
-		while (!tempFile.eof())
-		{
-			combinedFile.put(tempFile.get());
-		}
-		combinedFile << std::endl;
-	}
-	//std::ostream_iterator<std::string> output{ std::cout, "\n" };
-	//std::copy(files.begin(), files.end(), output);
-
-	combinedFile.close();
-	return combinedFile;
-}ÿ
-#include <vector>
-#include <string>
-
-#include "FileCombiner.h"
-
-int main()
-{
-	std::vector<std::string> testVec{ "FileCombiner.cpp", "TestCombineFiles.cpp" };
-	FileCombiner::combineFiles(testVec, "test.txt");
-
-	return 0;
-}ÿ
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-
-#include "FileCombiner.h"
-
-std::ofstream FileCombiner::combineFiles(std::vector<std::string> files, std::string destination) {
-	std::ofstream combinedFile{destination, std::ios::app};
-	if (!combinedFile) {
-		std::cerr << "File could not be opened" << std::endl;
-		exit(EXIT_FAILURE);
-	}
-
-	for (auto path : files)
-	{
-		std::ifstream tempFile{ path, std::ios::in };
-		if (!tempFile) continue;
-
-		while (!tempFile.eof())
+		while (tempFile.good() && tempFile.peek() != EOF)
 		{
 			combinedFile.put(tempFile.get());
 		}
@@ -111,7 +27,7 @@ std::ofstream FileCombiner::combineFiles(std::vector<std::string> files, std::st
 
 	combinedFile.close();
 	return combinedFile;
-}ÿ
+}
 #include <vector>
 #include <string>
 
@@ -123,4 +39,4 @@ int main()
 	FileCombiner::combineFiles(testVec, "test.txt");
 
 	return 0;
-}ÿ
+}

@@ -141,7 +141,11 @@
   <ItemGroup>
     <ClCompile Include="FileCombiner.cpp" />
     <ClCompile Include="FileCombiner.h" />
+    <ClCompile Include="FileCombinerMenu.cpp" />
     <ClCompile Include="TestCombineFiles.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FileCombinerMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
