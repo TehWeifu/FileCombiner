@@ -25,6 +25,9 @@ void FileCombinerMenu::executeSelection()
 	case Select::SELECT_DEFINE_DESTINATION:
 		setDestination();
 		break;
+	case Select::SELECT_CHANGE_CURRENT_DIRECTORY:
+		setCurrentDirectory();
+		break;
 	case Select::SELECT_COMBINE_FILES:
 		combineFiles();
 		break;
@@ -50,11 +53,21 @@ void FileCombinerMenu::addFiles(std::string& tmp)
 void FileCombinerMenu::setDestination(){
 	std::cout << "Input a destination for the file: " << std::endl;
 	std::cin >> this->destPath;
-	comb.setDestinationPath(destPath);	
+	comb.setDestinationPath(destPath);
+	std::cin.ignore();
 }
 
 void FileCombinerMenu::combineFiles() {
 	comb.combineFiles(paths);
+}
+
+void FileCombinerMenu::setCurrentDirectory()
+{
+	std::string temp;
+	std::cout << "Input the new directory path: ";
+	std::getline(std::cin, temp);
+	std::getline(std::cin, temp);
+	comb.setCurrentDirectory(temp);
 }
 
 void FileCombinerMenu::reUserSelection()
@@ -62,6 +75,7 @@ void FileCombinerMenu::reUserSelection()
 	int selection{ 0 };
 	std::cout << "Please select an option of the following\n->" << static_cast<int>(Select::SELECT_ADD_FILES) << ": To add files." << std::endl;
 	std::cout << "->" << static_cast<int>(Select::SELECT_DEFINE_DESTINATION) << ": to select destination path." << std::endl;
+	std::cout << "->" << static_cast<int>(Select::SELECT_CHANGE_CURRENT_DIRECTORY) << ": to change the current directory." << std::endl;
 	std::cout << "->" << static_cast<int>(Select::SELECT_COMBINE_FILES) << ": to combine the files.\n->" <<
 		static_cast<int>(Select::SELECT_QUIT) << ": to quit the program." << std::endl;
 	std::cin >> selection;

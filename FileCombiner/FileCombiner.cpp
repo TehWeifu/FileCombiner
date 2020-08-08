@@ -52,5 +52,3 @@ void FileCombiner::setDestinationPath(const std::string& path)
 {
 	this->currentDestinationPath = path;
 }
-
-

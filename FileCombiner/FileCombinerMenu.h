@@ -5,7 +5,7 @@
 #include "FileCombiner.h"
 
 enum class Select {
-	SELECT_NONE = 0, SELECT_ADD_FILES, SELECT_DEFINE_DESTINATION, SELECT_COMBINE_FILES, SELECT_QUIT
+	SELECT_NONE = 0, SELECT_ADD_FILES, SELECT_DEFINE_DESTINATION, SELECT_CHANGE_CURRENT_DIRECTORY, SELECT_COMBINE_FILES, SELECT_QUIT
 };
 
 class FileCombinerMenu
@@ -20,6 +20,7 @@ public:
 	void reUserSelection();
 	void setDestination();
 	void combineFiles();
+	void setCurrentDirectory();
 
 private:
 	Select currentOption{ Select::SELECT_NONE };
