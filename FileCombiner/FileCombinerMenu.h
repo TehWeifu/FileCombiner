@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include "FileCombiner.h"
 
 enum class Select {
 	SELECT_NONE = 0, SELECT_ADD_FILES, SELECT_DEFINE_DESTINATION, SELECT_COMBINE_FILES, SELECT_QUIT
@@ -24,4 +25,5 @@ private:
 	Select currentOption{ Select::SELECT_NONE };
 	std::vector<std::string> paths;
 	std::string destPath{ "" };
+	FileCombiner comb;
 };

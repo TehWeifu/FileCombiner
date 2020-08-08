@@ -7,5 +7,12 @@
 class FileCombiner
 {
 public:
-	static void combineFiles(std::vector<std::string>, std::string);
+	void combineFiles(std::vector<std::string>& paths);
+	void setCurrentDirectory(const std::string& path);
+	void setDestinationPath(const std::string& path);
+	void readFilesFromCurrentDirectory(std::vector<std::string>& files);
+private:
+	std::string currentDirectory = "";
+	std::string currentDestinationPath = "";
+
 };

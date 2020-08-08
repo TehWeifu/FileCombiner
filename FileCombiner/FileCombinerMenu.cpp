@@ -1,5 +1,4 @@
 #include <iostream>
-#include "FileCombiner.h"
 #include "FileCombinerMenu.h"
 
 void FileCombinerMenu::startMenu()
@@ -51,10 +50,11 @@ void FileCombinerMenu::addFiles(std::string& tmp)
 void FileCombinerMenu::setDestination(){
 	std::cout << "Input a destination for the file: " << std::endl;
 	std::cin >> this->destPath;
+	comb.setDestinationPath(destPath);	
 }
 
 void FileCombinerMenu::combineFiles() {
-	FileCombiner::combineFiles(paths, destPath);
+	comb.combineFiles(paths);
 }
 
 void FileCombinerMenu::reUserSelection()

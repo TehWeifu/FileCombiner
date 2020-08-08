@@ -1,6 +1,5 @@
 #include <vector>
 #include <string>
-#include "FileCombiner.h"
 #include "FileCombinerMenu.h"
 #include "jagpdf/api.h"
 
@@ -16,9 +15,9 @@ int main()
 	//doc.page().canvas().text(200, 600, "TZest!");
 	//doc.page_end();
  //   doc.finalize();
-	//FileCombinerMenu test;
-	//test.startMenu();
-	std::vector<std::string> testVec{ "FileCombiner.cpp", "TestCombineFiles.cpp" };
-	FileCombiner::combineFiles(testVec, "");
+	FileCombinerMenu test;
+	test.startMenu();
+	//std::vector<std::string> testVec{ "FileCombiner.cpp", "TestCombineFiles.cpp" };
+	//FileCombiner::combineFiles(testVec);
 	return 0;
 }
