@@ -15,6 +15,7 @@ void FileCombiner::combineFiles(std::vector<std::string>& files) {
 		std::for_each(files.begin(), files.end(), [](const auto& path) {std::cout << path << std::endl; });
 	}
 	if(currentDestinationPath.empty()) currentDestinationPath = files[0] + "_combined.txt";
+	pdf::Document doc(pdf::create_file(currentDestinationPath.c_str()));
 	std::ofstream combinedFile{ currentDestinationPath, std::ios::app};
 	if (!combinedFile) {
 		std::cerr << "File could not be opened" << std::endl;
@@ -39,7 +40,12 @@ void FileCombiner::readFilesFromCurrentDirectory(std::vector<std::string>& files
 {
 	if (currentDirectory.empty()) currentDirectory = fs::current_path().string();
 	for (const auto& entry : fs::directory_iterator(currentDirectory)) {
-		if (entry.is_regular_file()) files.emplace_back(entry.path().string());
+		if (entry.is_regular_file()
+			&& entry.path().has_extension()
+			&& entry.path().extension() != ".txt" 
+			&& entry.path().extension() != ".exe") {
+			files.emplace_back(entry.path().string());
+		}
 	}
 }
 
